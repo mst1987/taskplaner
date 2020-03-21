@@ -1,0 +1,24 @@
+<div class="content">
+    <app-add-task></app-add-task>
+
+    <ng-container *ngIf="openTasks.length">
+        <label>Open Tasks</label>
+        <div class="list-group">
+            <app-task *ngFor="let task of openTasks" [task]="task"></app-task>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="progressTasks.length">
+        <label>In Progress</label>
+        <div class="list-group">
+            <app-task *ngFor="let task of progressTasks" [task]="task"></app-task>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="doneTasks.length">
+        <label>Done</label>
+        <div class="list-group">
+            <app-task *ngFor="let task of doneTasks" [task]="task"></app-task>
+        </div>
+    </ng-container>
+</div>

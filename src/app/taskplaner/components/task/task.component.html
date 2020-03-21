@@ -1,0 +1,39 @@
+<form [formGroup]="editTaskForm">
+    <div class="input-group singleTask" *ngIf="task && task.name">
+        <input type="text" class="form-control" formControlName="name" id="name" name="name" aria-label="Text input with segmented dropdown button" />
+        <div class="input-group-append">
+            <button type="button" class="btn btn-primary" (click)="showDetails()">
+                Details
+            </button>
+            <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                <button *ngIf="editable" class="dropdown-item" (click)="updateTask()">
+                    Save
+                </button>
+                <div role="separator" class="dropdown-divider"></div>
+                <button *ngIf="isOpen" class="dropdown-item" (click)="startTask()">
+                    Start
+                </button>
+                <button *ngIf="isInProgress" class="dropdown-item" (click)="finishTask()">
+                    Finish
+                </button>
+                <button *ngIf="!editable" class="dropdown-item" (click)="toggleEditable()">
+                    Edit
+                </button>
+                <button class="btn btn-danger dropdown-item" (click)="deleteTask()">
+                    Delete
+                </button>
+            </div>
+        </div>
+        <div *ngIf="display" class="content">
+            <div class="description">
+                <textarea type="text" class="form-control" formControlName="description" id="description" name="description"></textarea>
+            </div>
+            <button *ngIf="editable" class="btn btn-danger float-right" (click)="updateTask()">
+                Save
+            </button>
+        </div>
+    </div>
+</form>
